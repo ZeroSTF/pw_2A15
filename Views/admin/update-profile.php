@@ -14,13 +14,14 @@ if(isset($_POST['Update']))
   $Usert=new User(1,"str","str","str","b");
 	$Usert->setUsername($_POST['username']);
   $Usert->setpwd($_POST['password']);
+  $Usert->setEmail($_POST['email']);
   $Usert->setType($_POST['type']);
   $Usert->setid($_GET['uid']);
  // $uid=intval($_GET['uid']);
 $Usertt= new UserC();
 //$query=mysqli_query($con,"update users set username='$username' , password='$password' , type='$type' where id='$uid'");
 $Usertt->modifierUser($Usert);
-$_SESSION['msg']="Profile Updated successfully";
+echo "<script>alert('Update successful');</script>";
 }
   }
 ?>
@@ -288,7 +289,7 @@ $_SESSION['msg']="Profile Updated successfully";
                               </div>
                           </div>
                           <div style="margin-left:100px;">
-                          <input type="submit" name="Submit" value="Update" class="btn btn-theme"></div>
+                          <input type="submit" name="Update" value="Update" class="btn btn-theme"></div>
                           </form>
                       </div>
                   </div>

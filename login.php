@@ -1,11 +1,7 @@
 <?php 
 session_start();
-//require_once('C:\xampp\htdocs\projet\config.php');
 include_once('C:\xampp\htdocs\projet\Model\User.php');
 include_once('C:\xampp\htdocs\projet\Controller\UserC.php');
-
-//if(isset($_POST['Login']))
-//{
 $pwd=$_POST['Password'];
 $username=$_POST['Username'];
 
@@ -48,5 +44,4 @@ $host  = $_SERVER['HTTP_HOST'];
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
 exit();
 }
-//}
 ?>

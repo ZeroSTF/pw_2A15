@@ -10,7 +10,7 @@
 				return $liste;
 			}
 			catch(Exception $e){
-				die('Erreur:'. $e->getMeesage());
+				die('Erreur:'. $e->getMessage());
 			}
 		}
 		function supprimerUser($id){
@@ -22,11 +22,11 @@
 				$req->execute();
 			}
 			catch(Exception $e){
-				die('Erreur:'. $e->getMeesage());
+				die('Erreur: '. $e->getMessage());
 			}
 		}
 		function ajouterUser($User){
-			$sql="INSERT INTO User (username,Email,pwd,type) 
+			$sql="INSERT INTO User (username,Email,password,type) 
 			VALUES (:username,:Email,:pwd,:type)";
 			$db = config::getConnexion();
 			try{
@@ -64,7 +64,7 @@
 					'UPDATE User SET 
 						username=:username, 
 						email=:email, 
-						pwd=:pwd,
+						password=:pwd,
 						type=:type
 					WHERE id= :id'
 				);
