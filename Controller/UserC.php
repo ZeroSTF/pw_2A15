@@ -68,7 +68,6 @@
 						type=:type
 					WHERE id= :id'
 				);
-				//$query = "UPDATE `user` SET `nom` = '".$User->getNom()."', `prenom` = '".$User->getPrenom()."', `email` = '".$User->getEmail()."', `pwd` = '".$User->getpwd()."' ' WHERE `User`.`id` = '".$id."'";
 				$query->execute([
 					'id' => $User->getid(),
 					'username' => $User->getUsername(),
