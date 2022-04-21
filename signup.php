@@ -24,7 +24,7 @@ include_once('C:\xampp\htdocs\projet\Controller\UserC.php');
         echo "<script>alert('ERROR :  ".$error."');</script>";
     }
     else{
-        $requete ="SELECT * FROM user WHERE email='$email'";
+        $requete ="SELECT * FROM user WHERE email='$email' OR username='$username'";
             $config = config::getConnexion();
                 $querry = $config->prepare($requete);
                 $querry->execute();
@@ -33,12 +33,13 @@ include_once('C:\xampp\htdocs\projet\Controller\UserC.php');
 
 if($counter>0)
 {
-	echo "<script>alert('Email id already exist with another account. Please try with other email id');</script>";
+	echo "<script>alert('Email or username already in use.');</script>";
 } else{
     $Usert=new User(0,"str","str","str","b");
 	$Usert->setUsername($username);
-  $Usert->setpwd($password);
-  $Usert->setType('U');
+    $Usert->setEmail($email);
+    $Usert->setpwd($password);
+     $Usert->setType('U');
 $Usertt= new UserC();
 $Usertt->ajouterUser($Usert);
 
