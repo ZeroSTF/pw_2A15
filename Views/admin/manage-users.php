@@ -264,6 +264,7 @@ if($msg)
 							  $cnt=1;
                 if ($counter!=0)
                 {
+                  
 							  while($counter>0)
                 $counter=$counter-1;
 							  {?>
