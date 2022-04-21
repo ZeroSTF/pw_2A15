@@ -260,14 +260,12 @@ if($msg)
                 $querry->execute();
                 $result = $querry->fetchAll();
                 $counter=count($result);
-
-							  $cnt=1;
                 if ($counter!=0)
-                {
-                  
+                {      
 							  while($counter>0)
-                $counter=$counter-1;
-							  {?>
+							  {
+                  $counter=$counter-1;
+                  ?>
                               <tr>
                               <td><?php echo $result[$counter]['id'];?></td>
                                   <td><?php echo $result[$counter]['username'];?></td>
@@ -280,7 +278,7 @@ if($msg)
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
                                   </td>
                               </tr>
-                              <?php $cnt=$cnt+1; }}?>
+                              <?php  }}?>
                              
                               </tbody>
                           </table>
