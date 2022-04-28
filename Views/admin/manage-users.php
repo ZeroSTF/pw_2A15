@@ -6,7 +6,9 @@ $Usert=new UserC();
 // checking session is valid for not 
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
-  } else{
+  } 
+  else
+  {
 
 // for deleting user
 if(isset($_GET['id']))
