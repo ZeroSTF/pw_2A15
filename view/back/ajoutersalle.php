@@ -1,7 +1,7 @@
 <?php
     include_once '../../model/salle.php';
     include_once '../../controller/salleC.php';
-
+    
     $error = "";
 
     // create salle

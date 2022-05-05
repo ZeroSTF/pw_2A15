@@ -3,7 +3,7 @@
 
     $error = "";
 
-    // connexion git
+    
     $salle = null;
 
     // create an instance of the controller

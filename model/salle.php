@@ -17,6 +17,12 @@
 			return $this->Capacité;
 		}
        
+		function setIdSalle(){
+			return $this->IdSalle;
+		}
+		function setCapacité(){
+			return $this->Capacité;
+		}
        
 		
 	}

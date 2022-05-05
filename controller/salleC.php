@@ -6,16 +6,15 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/projet/model/salle.php';
 		function ajoutersalle($salle){
 			
 			
-			$sql="INSERT INTO salle ( IdSalle,Capacité) 
-			VALUES (:IdSalle, :Capacité)";
+			$sql="INSERT INTO `salle`(`IdSalle`, `Capacité`) VALUES (:ID, :CAP)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
+				var_dump($salle);
 			
 				$query->execute([
-					'IdSalle' => $salle->getIdSalle(),
-					
-					'Capacité' => $salle->getCapacité()
+					'ID' => $salle->getIdSalle(),
+					'CAP' => $salle->getCapacité()
 				]);			
 			}
 			catch (Exception $e){
@@ -68,15 +67,16 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/projet/model/salle.php';
 			try {
 				$db = config::getConnexion();
 				$query = $db->prepare(
-					'UPDATE salle SET 
-						
-						Capacité = :Capacité
-					WHERE IdSalle = :IdSalle'
+					'UPDATE `salle` SET `IdSalle`=:Id,`Capacité`=:Cap WHERE `IdSalle`=:Id'
 				);
+				var_dump($salle);
 				$query->execute([
-					'IdSalle' => $IdSalle,
-					'Capacité' => $salle->getCapacité()
+					'Id' => $salle->getIdSalle(),
+					'Cap' => $salle->getCapacité()
 					
+
+					//'ID' => $salle->getIdSalle(),
+					//'CAP' => $salle->getCapacité()
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
 			} catch (PDOException $e) {

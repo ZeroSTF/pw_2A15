@@ -11,10 +11,9 @@
 		<table border="1" align="center">
 			<tr>
 			<th>IdSalle</th>
-				<th>Capacité</th>
-				
-				<th>Modifier</th>
-				<th>Supprimer</th>
+			<th>Capacité</th>
+			<th>Modifier</th>
+			<th>Supprimer</th>
 			</tr>
 			<?php
 				foreach($liste as $salle){

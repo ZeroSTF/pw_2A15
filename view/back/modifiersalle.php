@@ -1,6 +1,8 @@
 <?php
     include_once '../../Model/salle.php';
     include_once '../../Controller/salleC.php';
+    
+    
 
     $error = "";
 
@@ -9,27 +11,29 @@
 
     // create an instance of the controller
     $salleC= new salleC();
+    var_dump($_POST["Cap"]);
     if (
        
-        isset($_POST["IdSalle"]) &&		
-        isset($_POST["Capacité"]) 
+        isset($_POST["Id"]) &&		
+        isset($_POST["Cap"]) 
     ) 
     {
         if (
-            !empty($_POST["IdSalle"]) &&	
-            isset($_POST["Capacité"]) 
+            !empty($_POST["Id"]) &&	
+            isset($_POST["Cap"]) 
         ) {
             $salle = new salle(
-                $_POST["Idsalle"] 	,	
-                $_POST["Capacité"] 
+                $_POST["Id"] 	,	
+                $_POST["Cap"] 
             );
-            $salleC->modifiersalle($salle, $_POST["IdSalle"]);
-            header('Location:affichersalle.php');
+            $salleC->modifiersalle($salle, $_POST["Id"]);
+        //    header('Location:affichersalle.php');
         }
         else
             $error = "Missing information";
     }    
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +43,7 @@
     <body>
         <button><a href="affichersalle.php">Retour à la liste des salles</a></button>
         <hr>
-        
+      
         <div id="error">
             <?php echo $error; ?>
         </div>
@@ -56,19 +60,15 @@
                         <label for="IdSalle">Id du salle:
                         </label>
                     </td>
-                    <td><input type="varchar " name="IdSalle" id="IdSalle" value="<?php echo $salle['IdSalle']; ?>" maxlength="30"></td>
+                    <td><input type="varchar " name="Id" id="IdSalle" value="<?php echo $salle['IdSalle']; ?>" maxlength="30"></td>
                 </tr>
 				<tr>
                     <td>
                         <label for="Capacité">Capacité de la salle:
                         </label>
                     </td>
-                    <td><input type="number" name="Capacité" id="Capacité" value="<?php echo $salle['Capacité']; ?>" maxlength="20"></td>
-                </tr>
-               
-                
-                
-                         
+                    <td><input type="number" name="Cap" id="Capacité" value="<?php echo $salle['Capacité']; ?>" maxlength="20"></td>
+                </tr>        
                 <tr>
                     <td></td>
                     <td>
