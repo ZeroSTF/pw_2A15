@@ -11,13 +11,13 @@ if (strlen($_SESSION['id']==0)) {
 if(isset($_POST['Submit']))
 {
 $oldpassword=md5($_POST['oldpass']);
-$sql=mysqli_query($con,"SELECT password FROM admin where password='$oldpassword'");
+$sql=mysqli_query($con,"SELECT password FROM user where password='$oldpassword'");
 $num=mysqli_fetch_array($sql);
 if($num>0)
 {
 $adminid=$_SESSION['id'];
 $newpass=md5($_POST['newpass']);
- $ret=mysqli_query($con,"update admin set password='$newpass' where id='$adminid'");
+ $ret=mysqli_query($con,"update user set password='$newpass' where id='$adminid'");
 $_SESSION['msg']="Password Changed Successfully !!";
 //header('location:user.php');
 }

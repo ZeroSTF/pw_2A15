@@ -82,10 +82,8 @@ echo "<script>alert('Data deleted');</script>";
               </div>
             </li>
           </ul>
-          <form class="ml-auto search-form d-none d-md-block" action="#">
-            <div class="form-group">
-              <input type="search" class="form-control" placeholder="Search Here">
-            </div>
+          <form method="post" action="recherche_A.php">
+          <input type="text" name="qq" placeholder="Search" required="">
           </form>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
@@ -241,6 +239,8 @@ echo "<script>alert('Data deleted');</script>";
                           <table class="table table-striped table-advance table-hover">
 	                  	  	  <h4><i class="fa fa-angle-right"></i> All ADMIN Details </h4>
 	                  	  	  <hr>
+                            <a href="tri_A.php"> 
+                                     <button class="btn btn-primary btn-xs">Sort by ID<i class="fa fa-pencil"></i></button></a>
                               <thead>
                               <tr>
                                   <th>ID.</th>
@@ -268,9 +268,9 @@ echo "<script>alert('Data deleted');</script>";
                                   <td>
                                      
                                      <a href="update-profile.php?uid=<?php echo $result[$counter]['id'];?>"> 
-                                     <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <a href="manage-users.php?id=<?php echo $result[$counter]['id'];?>"> 
-                                     <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
+                                     <button class="btn btn-primary btn-xs"><i class="fa fa-pencil">Modify</i></button></a>
+                                     <a href="manage-admin.php?id=<?php echo $result[$counter]['id'];?>"> 
+                                     <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');">Delete<i class="fa fa-trash-o "></i></button></a>
                                   </td>
                               </tr>
                               <?php }}?>

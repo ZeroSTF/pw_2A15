@@ -2,13 +2,10 @@
 session_start();
 include_once 'C:\xampp\htdocs\projet\config.php';
 include_once 'C:\xampp\htdocs\projet\Controller\UserC.php';
-$Usert=new UserC();
 // checking session is valid for not 
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
-  } 
-  else
-  {
+  } else{
 
 // for deleting user
 if(isset($_GET['id']))
@@ -59,7 +56,7 @@ echo "<script>alert('Data deleted');</script>";
                     <i class="flag-icon flag-icon-us"></i>
                   </div>
                 </div>
-                <span class="profile-text font-weight-medium d-none d-md-block">English</span>
+                <span class="profile-text font-weight-medium d-none d-md-block">FRANCAIS</span>
               </a>
               <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
                 <a class="dropdown-item">
@@ -85,7 +82,7 @@ echo "<script>alert('Data deleted');</script>";
               </div>
             </li>
           </ul>
-          <form method="post" action="recherche_U.php">
+          <form method="post" action="recherche.php">
           <input type="text" name="qq" placeholder="Search" required="">
           </form>
           <ul class="navbar-nav ml-auto">
@@ -192,6 +189,7 @@ echo "<script>alert('Data deleted');</script>";
                   <?php echo $_SESSION['username'];?></p>
                   <p class="designation">ADMIN</p>
                 </div>
+              </a>
             </li>
             <li class="nav-item nav-category">Main Menu</li>
             <li class="nav-item">
@@ -208,7 +206,7 @@ echo "<script>alert('Data deleted');</script>";
                   <li class="nav-item">
                     <a class="nav-link" href="manage-users.php">USER TABLE</a>
                   </li>
-                 
+                  
                 </ul>
               </div>
             </li>
@@ -231,7 +229,7 @@ echo "<script>alert('Data deleted');</script>";
         </header>
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Manage Users</h3>
+          	<h3><i class="fa fa-angle-right"></i> Manage ADMIN</h3>
 				<div class="row">
 				
                   
@@ -239,10 +237,8 @@ echo "<script>alert('Data deleted');</script>";
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> All User Details </h4>
+	                  	  	  <h4><i class="fa fa-angle-right"></i> All ADMIN Details </h4>
 	                  	  	  <hr>
-                            <a href="tri_U.php"> 
-                                     <button class="btn btn-primary btn-xs">Sort by ID<i class="fa fa-pencil"></i></button></a>
                               <thead>
                               <tr>
                                   <th>ID.</th>
@@ -251,14 +247,14 @@ echo "<script>alert('Data deleted');</script>";
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $requete = "select * from user where type='U'";
+                              <?php $requete = "select * from user where type='A' order by id DESC";
             $config = config::getConnexion();
                 $querry = $config->prepare($requete);
                 $querry->execute();
                 $result = $querry->fetchAll();
                 $counter=count($result);
                 if ($counter!=0)
-                {      
+                {
 							  while($counter>0)
 							  {
                   $counter=$counter-1;
@@ -275,7 +271,7 @@ echo "<script>alert('Data deleted');</script>";
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');">Delete<i class="fa fa-trash-o "></i></button></a>
                                   </td>
                               </tr>
-                              <?php  }}?>
+                              <?php }}?>
                              
                               </tbody>
                           </table>
