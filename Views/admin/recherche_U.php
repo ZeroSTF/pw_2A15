@@ -247,7 +247,7 @@ echo "<script>alert('Data deleted');</script>";
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $requete = "select * from user where type='U' and username like :username";
+                              <?php $requete = "select * from user where type='U' and username like :username or email like :username";
             $config = config::getConnexion();
                 $querry = $config->prepare($requete);
                 $querry->bindvalue('username','%'.$_POST['qq'].'%');
