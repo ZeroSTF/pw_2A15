@@ -13,6 +13,22 @@
 				die('Erreur:'. $e->getMeesage());
 			}
 		}
+
+
+
+		
+		function trierreclamation(){
+			$sql="SELECT * FROM reclamation ORDER BY date DESC";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch(Exception $e){
+				die('Erreur:'. $e->getMeesage());
+			}
+		}
+
 		function supprimerreclamation($id){
 			$sql="DELETE FROM reclamation WHERE id=:id";
 			$db = config::getConnexion();
@@ -83,6 +99,19 @@
 			} catch (PDOException $e) {
 				$e->getMessage();
 			}
+
+		}
+		function rechercherreclamation($sujet)
+		{
+			$sql="SELECT *FROM reclamation where sujet";
+			$db = config::getConnexion() ;
+			try {
+				$liste= $db->query($sql);
+				return $liste ;
+
+			}
+			catch (Exception $e)
+			{ die ('erreur:'.$e->getMessage());}
 		}
 
 	}

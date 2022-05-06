@@ -79,6 +79,25 @@
                 $e->getMessage();
             }
         }
+
+        function stars($stars, $id_Rep){
+            try {
+                $db = config::getConnexion();
+                $query = $db->prepare(
+                    'UPDATE reponse SET  
+                        stars= :stars
+                    WHERE id_Rep= :id_Rep'
+                );
+                $query->execute([
+                    'stars' => $stars,
+                    'id_Rep' => $id_Rep
+                ]);
+                echo $query->rowCount() . " records UPDATED successfully <br>";
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
+
         public function afficherreclamation($id_Rep)
         {
             try 

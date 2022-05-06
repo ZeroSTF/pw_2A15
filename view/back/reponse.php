@@ -19,7 +19,7 @@ $liste=$reponsea->afficherreponse();
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">date_Rep</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date_Rep</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contenu</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_rep</th>
                       <th class="text-secondary opacity-7"></th>
@@ -33,15 +33,30 @@ $liste=$reponsea->afficherreponse();
                     <tr>
                       <td class="">
                           <div class="">
-                            <h6 style="margin-left: 14px;" class="mb-0 text-sm"><?php echo $rec['date_Rep']; ?></h6>
+                            <h6 style="margin-left: 14px;" class="mb-0 text-sm"><?php echo $rec['Date_Rep']; ?></h6>
                         </div>
                       </td>
                       <td class="align-middle text-center">
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $rec['contenu']; ?></p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $rec['Contenu']; ?></p>
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $rec['id_Rep']; ?></span>
                       </td>
+                      <td class="align-middle text-center">
+                      
+                      <?php if($rec['stars']==1)
+                              echo "<img style='width:20px;' src='../images/stars.png'>";
+                              if($rec['stars']==2)
+                              {echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";}
+                              if($rec['stars']==3)
+                              {echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";}
+                              if($rec['stars']==4)
+                              {echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";echo "<img style='width:20px;' src='../images/stars.png'>";}
+
+
+
+                        ?>
+                    </td>
                       <td class="align-middle">
 					<form method="POST" action="ajouterreponse.php">
 						<input type="submit" name="ajouter" value="ajouter">
@@ -55,7 +70,7 @@ $liste=$reponsea->afficherreponse();
           </form>
                       </td>
                       <td class="align-middle">
-                        <a href="supprimerreponse.php?id=<?php echo $rec['id_Rep']; ?>" class="text-secondary font-weight-bold text-xs">
+                        <a href="supprimerreponse.php?id_Rep=<?php echo $rec['id_Rep']; ?>" class="text-secondary font-weight-bold text-xs">
                           Supprimer
                         </a>
                       </td>

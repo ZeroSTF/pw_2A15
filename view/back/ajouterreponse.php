@@ -1,5 +1,6 @@
 <?php
     include_once '../../controller/reponse.php';
+    require_once '../../PHPMailer-5.2-stable/PHPMailerAutoload.php';
 
     $error = "";
 
@@ -7,6 +8,31 @@
     $reponse  = null;
 
     // create an instance of the controller
+
+
+            $mail = new PHPMailer;
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'cineprod12@gmail.com';                 // SMTP username
+$mail->Password = '20260377';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom('cineprod12@gmail.com', 'Reponse');
+$mail->addAddress("nasreddine1234@gmail.com", 'Reponse reclamation');     // Add a recipient
+
+$mail->Subject = 'Notification';
+$mail->Body    = '<h1>Reponse reclamation <h1>';
+$mail->AltBody = 'il y a une réponse';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+
+
+
     $reponseA = new reponseA();
     if (
         isset($_POST["date_Rep"])&&
@@ -26,6 +52,17 @@
             );
             $reponseA->ajouterreponse ($reponse );
             header('Location:afficherListereponse s.php');
+
+
+
+} else {
+    echo 'Message has been sent';
+}
+
+
+
+
+
         }
         else
             $error = "Missing information";

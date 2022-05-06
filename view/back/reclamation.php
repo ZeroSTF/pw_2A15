@@ -16,6 +16,9 @@ $liste=$reclamationa->afficherreclamation();
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
+                <form action='trierreclamation.php' >
+                <button style='margin-left:80%;' >Trier</button>
+                </form>
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -35,7 +38,7 @@ $liste=$reclamationa->afficherreclamation();
                     <tr>
                       <td class="">
                           <div class="">
-                            <h6 style="margin-left: 14px;" class="mb-0 text-sm"><?php echo $rec['id']; ?></h6>
+                            <h6 style="margin-left: 14px;" class="mb-0 text-sm"><?php echo $rec['ID']; ?></h6>
                         </div>
                       </td>
                       <td class="">
@@ -54,16 +57,16 @@ $liste=$reclamationa->afficherreclamation();
                       <td class="align-middle">
                       <form method="POST" action="modifierreclamation.php">
 						<input type="submit" name="Modifier" value="Modifier">
-						<input type="hidden" value=<?PHP echo $rec['id']; ?> name="id">
+						<input type="hidden" value=<?PHP echo $rec['ID']; ?> name="id">
 					</form>
           <td class="align-middle">
                       <form method="POST" action="ajouterreclamation.php">
 						<input type="submit" name="ajouter" value="ajouter">
-						<input type="hidden" value=<?PHP echo $rec['id']; ?> name="id">
+						<input type="hidden" value=<?PHP echo $rec['ID']; ?> name="id">
 					</form>
                       </td>
                       <td class="align-middle">
-                        <a href="supprimerreclamation.php?id=<?php echo $rec['id']; ?>" class="text-secondary font-weight-bold text-xs">
+                        <a href="supprimerreclamation.php?id=<?php echo $rec['ID']; ?>" class="text-secondary font-weight-bold text-xs">
                           Supprimer
                         </a>
                       </td>
