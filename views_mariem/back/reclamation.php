@@ -1,6 +1,6 @@
 <?php include'header.php'; 
-
 include '../../controller/reclamation.php';
+session_start();
 $reclamationa=new reclamationA();
 $liste=$reclamationa->afficherreclamation(); 
 ?>
@@ -27,6 +27,7 @@ $liste=$reclamationa->afficherreclamation();
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contenu</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_client</th>
                       <th class="text-secondary opacity-7"></th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -52,6 +53,11 @@ $liste=$reclamationa->afficherreclamation();
                       </td>
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success"><?php echo $rec['etat']; ?></span>
+                      </td>
+                      <td class="">
+                          <div class="">
+                            <h6 style="margin-left: 14px;" class="mb-0 text-sm"><?php echo $rec['id_client']; ?></h6>
+                        </div>
                       </td>
                      
                       <td class="align-middle">

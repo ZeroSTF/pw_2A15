@@ -1,29 +1,35 @@
 <?php
-    include_once '../controller/reponse.php';
-
+    include_once '../controller/reclamation.php';
+	session_start();
     $error = "";
 
     // create blog
-    $reponse = null;
+    $reclamation = null;
 
     // create an instance of the controller
-    $reponseA = new reponseA();
+    $reclamationA = new reclamationA();
     if (
-        isset($_POST["date_Rep"]) &&
-		isset($_POST["contenu"]) 	
+        isset($_POST["sujet"]) &&
+		isset($_POST["contenu"]) &&
+		isset($_POST["date"])&&
+		isset($_POST["etat"])
+
     ) {
         if (
-            !empty($_POST["date_Rep"]) && 
-			!empty($_POST['contenu']) 
+            !empty($_POST["sujet"]) && 
+			!empty($_POST['contenu']) &&
+			!empty($_POST['date']) &&
+			!empty($_POST['etat'])
         ) {           
-            $reponse = new reponse(
+            $reclamation = new reclamation(
                 null,
-				$_POST['date_Rep'],
+				$_POST['sujet'],
                 $_POST['contenu'], 
-				date("Y-m-d"),
-                'en attente'
+				$_POST['date'],
+				$_POST['etat'],
+				$_SESSION['id']
             );
-            $reponseA->ajouterreponse($reponse);
+            $reclamationA->ajouterreclamation($reclamation);
                         //echo $_POST["titre"].'---'.$_POST['contenu'].'---'.$_POST["categorie"].'---'.$_POST["date"].'---'.$_POST["jaime"].'---'.$_POST["id"];
 
             header('Location:contact_rep.php');
@@ -40,34 +46,33 @@
 	<div class="contact-agile">
 		
 		<div class="faq">
-			<h4 class="latest-text w3_latest_text">Contact Us</h4>
+			<h4 class="latest-text w3_latest_text">votre reclamation</h4>
 			<div class="container">
 				<div class="col-md-3 location-agileinfo">
 					<div class="icon-w3">
 						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 					</div>
 					<h3>Address</h3>
-					<h4>345 Setwant natrer,</h4>
-					<h4>Washington,</h4>
-					<h4>United States.</h4>
+					<h4>rue 23 Ghazela,</h4>
+					<h4>tunis,</h4>
+					<h4>tunisia.</h4>
 				</div>
 				<div class="col-md-3 call-agileits">
 					<div class="icon-w3">
 						<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
 					</div>
 					<h3>Call</h3>
-					<h4>+18044126235</h4>
-					<h4>+14056489808</h4>
-					<h4>+16789339049</h4>
+					<h4>+21655244199</h4>
+					<h4>+21620260377</h4>
+					<h4>+201671541895</h4>
 				</div>
 				<div class="col-md-3 mail-wthree">
 					<div class="icon-w3">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 					</div>
 					<h3>Email</h3>
-					<h4><a href="mailto:info@example.com">example1@mail.com</a></h4>
-					<h4><a href="mailto:info@example.com">example2@mail.com</a></h4>
-					<h4><a href="mailto:info@example.com">example3@mail.com</a></h4>
+					<h4><a href="mailto:info@example.com">cineprod12@mail.com</a></h4>
+					
 				</div>
 				<div class="col-md-3 social-w3l">
 					<div class="icon-w3">
@@ -82,9 +87,12 @@
 				</div>
 				<div class="clearfix"></div>
 				<form action="" method="post">
-					<input type="date" name="date_Rep" placeholder="date_Rep" required="">
-					<textarea  name="contenu" placeholder="Votre message" required=""></textarea>
-					<input type="submit" value="Envoyer votre reponse">
+					
+					<textarea  name="sujet" placeholder="Votre sujet" required=""></textarea>
+					<textarea  name="contenu" placeholder="Votre contenu" required=""></textarea>
+					<input type="date" name="date" placeholder="date" required="">
+					<textarea  name="etat" placeholder="Votre etat" required=""></textarea>
+					<input type="submit" value="Envoyer votre reclamation">
 				</form>
 			</div>
 		</div>

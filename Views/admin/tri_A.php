@@ -201,12 +201,41 @@ echo "<script>alert('Data deleted');</script>";
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="manage-admin.php">ADMIN TABLE</a>
+                    <a class="nav-link" href="manage-admin.php">TABLE ADMIN</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="manage-users.php">USER TABLE</a>
+                    <a class="nav-link" href="manage-users.php">TABLE USER</a>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_mariem/back/reclamation.php">TABLE RECLAMATION</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_mariem/back/reponse.php">TABLE REPONSE</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_omar/back/abonnement.php">TABLE ABONNEMENT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_omar/back/promotion.php">TABLE PROMOTION</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_soulaima/back/salle.php">TABLE SALLE</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_soulaima/back/projection.php">TABLE PROJECTION</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_soulaima/back/reservation.php">TABLE RESERVATION</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_chiha/back/Film.php">TABLE FILM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_chiha/back/Categorie.php">TABLE CATEGORIE</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../views_chiha/back/Produit.php">TABLE PRODUIT</a>
+                  </li>
                 </ul>
               </div>
             </li>

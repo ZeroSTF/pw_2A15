@@ -13,8 +13,7 @@ $Usert=$query->fetch(PDO::FETCH_ASSOC);
 if($Usert!=NULL)
 {
 if ($Usert['type']=="U"){
-    
-$extra="views_mariem/contact_rep.php";
+$extra="Views/webb/index.php";
 $_SESSION['username']=$_POST['Username'];
 $_SESSION['id']=$Usert['id'];
 $_SESSION['password']=$Usert['password'];
@@ -36,9 +35,10 @@ exit();
 else
 {
 echo "<script>alert('Invalid username or password');</script>";
-$extra="Views/Front";
+$extra="Views/Front/";
 $host  = $_SERVER['HTTP_HOST'];
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+header("location:http://$host$uri/$extra");
 exit();
 }
 ?>

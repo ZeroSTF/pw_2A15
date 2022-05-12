@@ -1,7 +1,18 @@
 <?php
-    include  $_SERVER['DOCUMENT_ROOT'].'/projet/config.php';
-    include_once $_SERVER['DOCUMENT_ROOT'].'/projet/model/reponse.php';
+    include  $_SERVER['DOCUMENT_ROOT'].'/projet_integration/config.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/projet_integration/model/reponse.php';
     class reponseA {
+        function afficherreponse1($id_user){
+            $sql="SELECT * FROM reponse where idRec in (select ID from reclamation where id_client=".$id_user.")";
+            $db = config::getConnexion();
+            try{
+                $liste = $db->query($sql);
+                return $liste;
+            }
+            catch(Exception $e){
+                die('Erreur:'. $e->getMessage());
+            }
+        }
         function afficherreponse(){
             $sql="SELECT * FROM reponse";
             $db = config::getConnexion();
@@ -104,7 +115,8 @@
             {
                 $pdo = config::getConnexion() ;
                 $query = $pdo ->prepare(
-                    'SELECT * FROM reclamation where id_Rep = :id'
+                    'SELECT * FROM reclamation where reponse = :id'
+
                 );
                 $query->execute([
                     'id'=>$id_Rep

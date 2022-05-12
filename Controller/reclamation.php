@@ -1,6 +1,6 @@
 <?php
-	include  $_SERVER['DOCUMENT_ROOT'].'/projet/config.php';
-	include_once $_SERVER['DOCUMENT_ROOT'].'/projet/model/reclamation.php';
+	include  $_SERVER['DOCUMENT_ROOT'].'/projet_integration/config.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/projet_integration/model/reclamation.php';
 	class reclamationA {
 		function afficherreclamation(){
 			$sql="SELECT * FROM reclamation";
@@ -42,8 +42,8 @@
 			}
 		}
 		function ajouterreclamation($reclamation){
-			$sql="INSERT INTO reclamation (sujet, contenu, date, etat) 
-			VALUES (:sujet,:contenu, :date,:etat)";
+			$sql="INSERT INTO reclamation (sujet, contenu, date, etat,id_client) 
+			VALUES (:sujet,:contenu, :date,:etat,:id_client)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
@@ -53,7 +53,8 @@
 					'sujet' => $reclamation->getsujet(),
 					'contenu' => $reclamation->getcontenu(),
 					'date' => $date,
-					'etat' => $reclamation->getetat()
+					'etat' => $reclamation->getetat(),
+					'id_client'=> $reclamation->getid_client()
 				]);			
 			}
 			catch (Exception $e){
@@ -85,7 +86,8 @@
 						date= :date, 
 						sujet= :sujet, 
 						contenu= :contenu, 
-						etat= :etat
+						etat= :etat,
+						id_client=:id_client
 					WHERE id= :id'
 				);
 				$query->execute([
@@ -93,7 +95,8 @@
 					'contenu' => $reclamation->getcontenu(),
 					'etat' => $reclamation->getetat(),
 					'date' => $reclamation->getdate(),
-					'id' => $id
+					'id' => $id,
+					'id_cient'=>$reclamation->getid_client()
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
 			} catch (PDOException $e) {

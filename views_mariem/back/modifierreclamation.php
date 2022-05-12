@@ -12,21 +12,24 @@
 		isset($_POST["sujet"]) &&		
         isset($_POST["contenu"]) &&
 		isset($_POST["date"]) && 
-        isset($_POST["etat"]) 
+        isset($_POST["etat"]) &&
+        isset($_POST["id_client"])
     ) {
         if (
             !empty($_POST["id"]) && 
 			!empty($_POST['sujet']) &&
             !empty($_POST["contenu"]) && 
 			!empty($_POST["date"]) && 
-            !empty($_POST["etat"]) 
+            !empty($_POST["etat"]) &&
+            !empty($_POST["id_client"])
         ) {           
             $reclamation = new reclamation(
                 $_POST['id'],
 				$_POST['sujet'],
                 $_POST['contenu'], 
 				$_POST['date'],
-                $_POST['etat']
+                $_POST['etat'],
+                $_POST['id_client']
             );
             $reclamationA->modifierreclamation($reclamation, $_POST["id"]);
             header('Location:reclamation.php');
@@ -67,7 +70,7 @@
                     <input type="text" name="etat" class="form-control" value="<?php echo $reclamation['etat']; ?>">
                   </div>
                   <input style="display:none;" name="id" class="form-control" value="<?php echo $reclamation['id']; ?>">
-
+                  <input style="display:none;" name="id_client" class="form-control" value="<?php echo $reclamation['id_client']; ?>">
              
 
                   <div class="text-center">

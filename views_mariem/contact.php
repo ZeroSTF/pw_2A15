@@ -1,9 +1,10 @@
 <?php
     include_once '../controller/reponse.php';
+    session_start();
 
     $error = "";
 	$reponsea=new reponseA();
-	$liste=$reponsea->afficherreponse(); 
+	$liste=$reponsea->afficherreponse1($_SESSION['id']); 
     
  include'header.php';?>
 

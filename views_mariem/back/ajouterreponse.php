@@ -7,30 +7,7 @@
     // create promotion 
     $reponse  = null;
 
-    // create an instance of the controller
-
-
-            $mail = new PHPMailer;
-
-$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'cineprod12@gmail.com';                 // SMTP username
-$mail->Password = '20260377';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                    // TCP port to connect to
-
-$mail->setFrom('cineprod12@gmail.com', 'Reponse');
-$mail->addAddress("nasreddine1234@gmail.com", 'Reponse reclamation');     // Add a recipient
-
-$mail->Subject = 'Notification';
-$mail->Body    = '<h1>Reponse reclamation <h1>';
-$mail->AltBody = 'il y a une réponse';
-
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-
+  
 
 
     $reponseA = new reponseA();
@@ -43,8 +20,35 @@ if(!$mail->send()) {
         if (
             !empty($_POST["date_Rep"]) && 
             !empty($_POST["contenu"]) &&
-            !empty($_POST["id"])
+            !empty($_POST["id_Rep"])
         ) {
+
+              // create an instance of the controller
+
+
+              $mail = new PHPMailer;
+
+              $mail->isSMTP();                                      // Set mailer to use SMTP
+              $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+              $mail->SMTPAuth = true;                               // Enable SMTP authentication
+              $mail->Username = 'cineprod12@gmail.com';                 // SMTP username
+              $mail->Password = '20260377';                           // SMTP password
+              $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+              $mail->Port = 587;                                    // TCP port to connect to
+              
+              $mail->setFrom('cineprod12@gmail.com', 'Reponse');
+              $mail->addAddress("nasreddine1234@gmail.com", 'Reponse reclamation');     // Add a recipient
+              
+              $mail->Subject = 'Notification';
+              $msg="Date : " . $_POST['date_Rep'] . " Contenu : " . $_POST['contenu'] . "";
+              $mail->Body    = '<h1>Reponse reclamation ' . $msg . '<h1>';
+              $mail->AltBody = 'il y a une réponse';
+              
+              if(!$mail->send()) {
+                  echo 'Message could not be sent.';
+                  echo 'Mailer Error: ' . $mail->ErrorInfo;
+
+                  
             $promotionA  = new promotionA (
                 $_POST['date_Rep'],
                 $_POST['contenu'],
@@ -78,7 +82,7 @@ if(!$mail->send()) {
     <title>User Display</title>
 </head>
     <body>
-        <button><a href="afficherListereponse s.php">Retour à la liste des reponse s</a></button>
+        
         <hr>
         
         <div id="error">
@@ -93,7 +97,7 @@ if(!$mail->send()) {
                         </label>
                     </td>
                     <td>
-                        <input type="date" name="date_REp" id="date_Rep" >
+                        <input type="date" name="date_Rep" id="date_Rep" >
                     </td>
                     
                     <tr>
@@ -101,7 +105,7 @@ if(!$mail->send()) {
                         <label for="contenu ">contenu :
                         </label>
                     </td>
-                    <td><input type="text" name="contenu " id="contenu" maxlength="50"></td>
+                    <td><input type="text" name="contenu" id="contenu" maxlength="50"></td>
                 </tr>
                 
                 <tr>
